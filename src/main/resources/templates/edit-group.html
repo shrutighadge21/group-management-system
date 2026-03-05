@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Group</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f4f6f9;
+            margin: 40px;
+        }
+
+        .container {
+            width: 400px;
+            background: white;
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0px 0px 10px #ccc;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            padding: 8px 12px;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-update {
+            background-color: #007bff;
+        }
+
+        .btn-back {
+            background-color: #6c757d;
+            text-decoration: none;
+            padding: 8px 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Edit Group</h2>
+
+    <form th:action="@{/update-group}" method="post">
+
+        <input type="hidden"
+               th:name="${_csrf.parameterName}"
+               th:value="${_csrf.token}" />
+
+        <input type="hidden" name="id" th:value="${group.id}">
+
+        <input type="text" name="name" th:value="${group.name}" required>
+        <input type="text" name="description" th:value="${group.description}">
+
+        <button type="submit">Update</button>
+    </form>
+
+</div>
+
+</body>
+</html>
